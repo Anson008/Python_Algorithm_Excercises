@@ -18,4 +18,3 @@ class Solution:
             if v not in visit_status and self.dfs(directed_graph, visit_status, v):
                 return True
         return False
-        
