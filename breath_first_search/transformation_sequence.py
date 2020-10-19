@@ -3,7 +3,7 @@ import string
 
 class Solution(object):
     def ladder_length(self, begin_word, end_word, word_list):
-        word_list = set (word_list)
+        word_list = set(word_list)
         if end_word not in word_list:
             return 0
         ans = 1
