@@ -15,6 +15,9 @@ class Solution(object):
         return True
 
     def is_bipartite(self, graph):
+        """
+        :param graph: List[List[int]]
+        """
         visited = {}
         for v in range(len(graph)):
             if v not in visited and not self.bfs(graph, visited, v):
