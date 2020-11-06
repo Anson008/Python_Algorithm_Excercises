@@ -1,31 +1,83 @@
-from random import randrange
+import random
 
 
-def partition(array, start, end, pivot_index):
-    array[pivot_index], array[end] = array[end], array[pivot_index]
-    store_index = start
-    pivot = array[end]
-    for i in range(start, end):
-        if array[i] < pivot:
-            array[store_index], array[i] = array[i], array[store_index]
-            store_index += 1
-    array[store_index], array[end] = array[end], array[store_index]
-    return store_index
+class Solution:
+    def quick_sort(self, array):
+        if len(array) == 0:
+            return []
+        self._quick_sort(array, 0, len(array) - 1)
+        return array
+
+    def _quick_sort(self, array, left, right):
+        if left >= right:
+            return
+        pivot = array[random.randint(left, right)]
+        index = self._partition(array, left, right, pivot)
+        self._quick_sort(array, left, index - 1)
+        self._quick_sort(array, index, right)
+
+    @staticmethod
+    def _partition(array, left, right, pivot):
+        while left <= right:
+            while array[left] < pivot:
+                left += 1
+            while array[right] > pivot:
+                right -= 1
+            if left <= right:
+                array[left], array[right] = array[right], array[left]
+                left += 1
+                right -= 1
+        return left
 
 
-def quick_sort(array, start, end):
-    if start >= end:
-        return
-    pivot_index = randrange(start, end + 1)
-    new_pivot_index = partition(array, start, end, pivot_index)
-    quick_sort(array, start, new_pivot_index - 1)
-    quick_sort(array, new_pivot_index + 1, end)
+class Solution2:
+    def quick_sort(self, arr):
+        if len(arr) == 0:
+            return []
+        self._quick_sort(arr, 0, len(arr) - 1)
+        return arr
+
+    def _quick_sort(self, arr, start, end):
+        if start >= end:
+            return
+        pivot_index = random.randrange(start, end + 1)
+        new_pivot_index = self._partition(arr, start, end, pivot_index)
+        self._quick_sort(arr, start, new_pivot_index - 1)
+        self._quick_sort(arr, new_pivot_index + 1, end)
+
+    @staticmethod
+    def _partition(arr, start, end, pivot_index):
+        arr[pivot_index], arr[end] = arr[end], arr[pivot_index]
+        store_index = start
+        pivot = arr[end]
+        for i in range(start, end):
+            if arr[i] < pivot:
+                arr[store_index], arr[i] = arr[i], arr[store_index]
+                store_index += 1
+        arr[store_index], arr[end] = arr[end], arr[store_index]
+        return store_index
 
 # time: average O(n*log(n)), worst O(n^2)
 # space: average O(log(n)), worst O(n)
 
 
-a1 = [28, 2, -1, 4]
-print("Original:", a1)
-quick_sort(a1, 0, len(a1) - 1)
-print("Sorted:", a1)
+if __name__ == "__main__":
+    a1 = [3, 0, 1, 7, 2, 9, 17, 45, 24]
+    a2 = [28, 2, -1, 4]
+    a3 = []
+
+    test = [a1, a2, a3]
+
+    solu = Solution()
+    solu2 = Solution2()
+    for l in test:
+        print("Solution 1:", solu.quick_sort(l))
+        print("Solution 2:", solu2.quick_sort(l))
+
+
+
+
+
+
+
+
