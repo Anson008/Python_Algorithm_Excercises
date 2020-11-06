@@ -1,5 +1,6 @@
 class Solution(object):
-    def wall_and_gates(self, rooms):
+    @staticmethod
+    def wall_and_gates(rooms):
         """
         Fill each empty room with the distance to its nearest gate.
         If it is impossible to reach a gate, it should be filled with INF.
@@ -17,7 +18,7 @@ class Solution(object):
             next = []
             for r, c in frontier:
                 for d in range(4):
-                    nr, nc = r + dr[d], c + dr[c]
+                    nr, nc = r + dr[d], c + dr[d]
                     if 0 <= nr < N and 0 <= nc < C and rooms[nr][nc] == INF:
                         rooms[nr][nc] = distance + 1
                         next.append((nr, nc))
