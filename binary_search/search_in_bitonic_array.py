@@ -61,6 +61,7 @@ class Solution(object):
             if res1 < 0 and res2 < 0:
                 return -1
 
+
 if __name__ == "__main__":
     a1 = [1, 3, 5, 8, 6, 2]
     a2 = [-2, 0, 6, 7, 8, 10]
