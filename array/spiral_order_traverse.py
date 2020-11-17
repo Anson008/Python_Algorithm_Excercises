@@ -1,7 +1,7 @@
 class Solution1(object):
     def spiral(self, matrix):
         """
-        input: int[][] matrix, N by N
+        input: int[][] matrix
         return: Integer[]
         """
         # write your solution here
@@ -20,12 +20,12 @@ class Solution1(object):
 
     @staticmethod
     def peel(matrix, r_start, c_start, r_end, c_end):
-        if (r_start == r_end) and (c_start == c_end):
-            return [matrix[r_start][c_start]]
-        res = matrix[r_start][c_start: c_end + 1]
-        for i in range(r_start + 1, r_end):
+        res = []
+        for j in range(c_start, c_end + 1):
+            res.append(matrix[r_start][j])
+        for i in range(r_start + 1, r_end + 1):
             res.append(matrix[i][c_end])
-        for j in range(c_end, c_start - 1, -1):
+        for j in range(c_end - 1, c_start - 1, -1):
             res.append(matrix[r_end][j])
         for i in range(r_end - 1, r_start, -1):
             res.append(matrix[i][c_start])
