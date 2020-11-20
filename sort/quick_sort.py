@@ -19,9 +19,9 @@ class Solution:
     @staticmethod
     def _partition(array, left, right, pivot):
         while left <= right:
-            while array[left] < pivot:
+            while left <= right and array[left] < pivot:
                 left += 1
-            while array[right] > pivot:
+            while left <= right and array[right] > pivot:
                 right -= 1
             if left <= right:
                 array[left], array[right] = array[right], array[left]
