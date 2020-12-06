@@ -50,7 +50,8 @@ class Solution:
                     right -= 1
         return res
 
-    def three_sum_smaller(self, array, target):
+    @staticmethod
+    def three_sum_smaller(array, target):
         array.sort()
         count = 0
         for i in range(len(array) - 2):
@@ -64,6 +65,31 @@ class Solution:
                 else:
                     end -= 1
         return count
+
+    @staticmethod
+    def three_sum_closest(num, target):
+        """
+        input: int[] num, int target
+        return: int
+        """
+        # write your solution here
+        num.sort()
+        closest = float('inf')
+        res = 0
+        for i in range(len(num) - 2):
+            start = i + 1
+            end = len(num) - 1
+            while start < end:
+                three_sum = num[i] + num[start] + num[end]
+                diff = abs(three_sum - target)
+                if diff < closest:
+                    closest = diff
+                    res = diff
+                if three_sum > target:
+                    end -= 1
+                else:
+                    start += 1
+        return res
 
 
 if __name__ == "__main__":
