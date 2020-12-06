@@ -64,25 +64,7 @@ class Solution:
         return res
 
     @staticmethod
-    def two_sum_smaller1(arr, target):
-        arr.sort()
-        i = 0
-        j = 1
-        count = 0
-        while i < len(arr) and j < len(arr):
-            if arr[i] + arr[j] < target:
-                count += 1
-                j += 1
-                if i == j:
-                    j -= 1
-                    i = 0
-            else:
-                j -= 1
-                i = 0
-        return count
-
-    @staticmethod
-    def two_sum_smaller2(arr, target):
+    def two_sum_smaller(arr, target):
         arr.sort()
         left = 0
         right = len(arr) - 1
@@ -104,6 +86,33 @@ class Solution:
             if target - x in arr1_hash:
                 return True
         return False
+
+    @staticmethod
+    def two_sum_all_pairs(array, target):
+        """
+        input: int[] array, int target
+        return: int[][]
+        """
+        array.sort()
+        l, r = 0, len(array) - 1
+        res = []
+        while l < r:
+            if array[l] + array[r] > target:
+                r -= 1
+            elif array[l] + array[r] < target:
+                l += 1
+            else:
+                if array[l] == array[l + 1]:
+                    while l < len(array) - 1 and array[l] == array[l + 1]:
+                        l += 1
+                if array[r] == array[r - 1]:
+                    while r > 0 and array[r] == array[r - 1]:
+                        r -= 1
+                res.append([array[l], array[r]])
+                l += 1
+                r -= 1
+        return res
+
 
 
 if __name__ == "__main__":
