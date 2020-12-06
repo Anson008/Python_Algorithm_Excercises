@@ -26,7 +26,8 @@ class Solution:
                     return True
         return False
 
-    def all_three_sum(self, array, target):
+    @staticmethod
+    def three_sum_all_triples(array, target):
         if not array:
             return None
         res = []
@@ -49,6 +50,20 @@ class Solution:
                     right -= 1
         return res
 
+    def three_sum_smaller(self, array, target):
+        array.sort()
+        count = 0
+        for i in range(len(array) - 2):
+            start = i + 1
+            end = len(array) - 1
+            while start < end:
+                three_sum = array[i] + array[start] + array[end]
+                if three_sum < target:
+                    count += end - start
+                    start += 1
+                else:
+                    end -= 1
+        return count
 
 
 if __name__ == "__main__":
