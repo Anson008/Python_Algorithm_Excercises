@@ -114,7 +114,6 @@ class Solution:
         return res
 
 
-
 if __name__ == "__main__":
     nums1 = [1, 2, 3]
     nums2 = [10, 1, 13]

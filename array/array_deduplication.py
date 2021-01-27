@@ -53,7 +53,8 @@ class Solution(object):
             i += 1
         return array[:j]
 
-    def dedup4(self, array):
+    @staticmethod
+    def dedup4(array):
         n = len(array)
         if n <= 1:
             return array

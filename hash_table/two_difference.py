@@ -1,6 +1,6 @@
 class Solution:
     @staticmethod
-    def two_difference_sorted(arr, target):
+    def two_difference_sorted1(arr, target):
         i = 0
         j = 1
         target = abs(target)
@@ -12,6 +12,30 @@ class Solution:
             else:
                 return True
         return False
+
+    @staticmethod
+    def two_difference_sorted2(array, target):
+        """
+        input: int[] array, int target
+        return: int[]
+        """
+        # write your solution here
+        n = len(array) - 1
+        i, j = 0, 1
+        target_abs = abs(target)
+        while j <= n:
+            if array[j] - array[i] < target_abs:
+                j += 1
+            elif array[j] - array[i] > target_abs:
+                i += 1
+                if i == j:
+                    j += 1
+            else:
+                if target >= 0:
+                    return [i, j]
+                else:
+                    return [j, i]
+        return []
 
     @staticmethod
     def two_difference_unsorted(arr, target):
