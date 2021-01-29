@@ -52,7 +52,7 @@ if __name__ == "__main__":
     arr1 = [1, 4, 6, 10, 13]
     arr2 = [4, 1, 18, 5, 2, 9]
     solu = Solution()
-    res1 = solu.two_difference_sorted(arr1, target=2)
+    res1 = solu.two_difference_sorted1(arr1, target=2)
     res2 = solu.two_difference_unsorted(arr2, target=6)
     print(res1)
     print(res2)
