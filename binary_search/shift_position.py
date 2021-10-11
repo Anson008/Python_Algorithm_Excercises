@@ -21,10 +21,7 @@ class Solution(object):
             else:
                 left = mid
         if array[left] < array[right]:
-            if right < n - 1:
-                return right + 1
-            else:
-                return 0
+            return 0
         else:
             return right
 
